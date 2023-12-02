@@ -1,0 +1,31 @@
+{% extends "admin_base.html" %}
+
+{% block main %}
+<div class="card m-5">
+    <div class="card-body">
+        <h5 class="p-2" style='border-bottom:2px solid orange'>View All Answers</h5>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Question ID</th>
+                    <th>User ID</th>
+                    <th>Answer ID</th>
+                    <th>Question</th>
+                    <th>User's Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for answer in all_answers %}
+                <tr>
+                    <td>{{ answer.question.id }}</td>
+                    <td>{{ answer.user.id }}</td>
+                    <td>{{ answer.answer_id }}</td>
+                    <td>{{ answer.question.question }}</td>
+                    <td>Option {{ answer.answer_id }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

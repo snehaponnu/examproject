@@ -1,0 +1,28 @@
+
+
+{% extends "student_base.html" %}
+
+{% block main %}
+ <div class="card  m-5">
+    <div class="card-body">
+        <h5 class="p-2 " style='border-bottom:2px solid orange'>View Your Answers</h5>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Question</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for answer in student_answers %}
+            <tr>
+
+              <td>  <h6>{{ answer.question.question }}</h6>
+            <p><strong>Your Answer:</strong> Option {{ answer.answer_id }}</p></td>
+            </tr>
+          {% endfor %}
+    </tbody>
+  </table>
+    </div>
+ </div>
+{% endblock %}

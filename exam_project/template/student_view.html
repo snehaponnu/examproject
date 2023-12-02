@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student View</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .answer-form {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            margin: auto;
+        }
+
+        fieldset {
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-size: 18px;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .option {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+
+<form method="post" action="{% url 'student_view' %}" class="answer-form">
+    {% csrf_token %}
+    {% for question in questions %}
+        <fieldset>
+            <legend>{{ question.question }}</legend>
+            <input type="hidden" name="question_id" value="{{ question.id }}">
+            <label class="option"><input type="radio" name="selected_answer_{{ question.id }}" value="1"> {{ question.ans1 }}</label>
+            <label class="option"><input type="radio" name="selected_answer_{{ question.id }}" value="2"> {{ question.ans2 }}</label>
+            <label class="option"><input type="radio" name="selected_answer_{{ question.id }}" value="3"> {{ question.ans3 }}</label>
+            <label class="option"><input type="radio" name="selected_answer_{{ question.id }}" value="4"> {{ question.ans4 }}</label>
+        </fieldset>
+    {% endfor %}
+    <button type="submit">Submit Answers</button>
+    {% for msg in messages %}
+               <center><p class="alert alert-danger my-3">{{msg}}</p></center>
+            {% endfor %}
+</form>
+
+</body>
+</html>

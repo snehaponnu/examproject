@@ -1,0 +1,31 @@
+{% extends "admin_base.html" %}
+
+{% block main %}
+ <div class="card  m-5">
+    <div class="card-body">
+        <h5 class="p-2 " style='border-bottom:2px solid orange'>View Questions</h5>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>option 1</th>
+        <th>option 2</th>
+        <th>option 3</th>
+        <th>option 4</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for qes in emps %}
+            <tr>
+              <td><center>{{ qes.question }}</center></td>
+                <td><center>{{ qes.ans1 }}</center></td>
+                <td><center>{{ qes.ans2 }}</center></td>
+                <td><center>{{ qes.ans3 }}</center></td>
+                <td><center>{{ qes.ans4 }}</center></td>
+            </tr>
+          {% endfor %}
+    </tbody>
+  </table>
+    </div>
+ </div>
+{% endblock %}

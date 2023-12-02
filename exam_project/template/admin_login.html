@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 18px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+             margin-bottom: 50px;
+
+        }
+        h2 {
+            text-align: center;
+            margin-top: auto;
+
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px; /* Increase the width */
+        }
+
+        input {
+            width: 100%;
+            padding: 15px; /* Increase the padding */
+            margin-bottom: 15px; /* Increase the margin */
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="admin_login" method="post">
+        <h1>Admin Login</h1>
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <input type="submit" value="Login">
+
+        <div class="alert alert-info" role="alert">
+         {% for msg in messages %}
+               <center><p class="alert alert-danger my-3">{{msg}}</p></center>
+            {% endfor %}
+        </div>
+
+    </form>
+
+</body>
+</html>

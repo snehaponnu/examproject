@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 18px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 50px;
+        }
+        h2 {
+            text-align: center;
+            margin-top: auto;
+
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+
+    <form action="register" method="POST">
+         <h1>Signup</h1>
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" name="username" placeholder="Username">
+
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" placeholder="First Name">
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" placeholder="Last Name">
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" placeholder="Email Address">
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" placeholder="Password">
+
+        <label for="password1">Confirm Password:</label>
+        <input type="password" name="password1" placeholder="Confirm Password">
+
+        <input type="submit" value="Register">
+
+             <center>Alredy have an account <small><a href="{% url 'login' %}"class="text-danger">Login</a></small></center>
+        <div class="alert alert-info" role="alert">
+         {% for msg in messages %}
+               <center><p class="alert alert-danger my-3">{{msg}}</p></center>
+            {% endfor %}
+        </div>
+
+    </form>
+
+
+</body>
+</html>
